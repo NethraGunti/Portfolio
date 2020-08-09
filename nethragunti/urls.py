@@ -16,10 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from about.views import home, sections
+from about.views import home, sections, ssl
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',home, name='home'),
     path('sections/',sections, name='sections'),
+    path('.well-known/acme-challenge/Ic_uyTPJhB9Q8Vqv2OIm_QV94tlJo-D59n9pWof4lzc', ssl, name="ssl")
 ]

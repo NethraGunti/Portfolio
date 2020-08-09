@@ -23,3 +23,5 @@ def sections(request):
 
     return render(request, 'about/sections.html', context)
 
+def ssl(request):
+    return HttpResponse("Ic_uyTPJhB9Q8Vqv2OIm_QV94tlJo-D59n9pWof4lzc.-TbmTJ2BHVCcNYioVcEspxPNivdTF3Qc34ltWNCmxGo")
