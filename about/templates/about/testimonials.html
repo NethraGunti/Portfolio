@@ -1,0 +1,41 @@
+<div class="text">
+    <h3>
+        Testimonials ({{testimonials.count}})
+    </h3>
+    
+    <p>
+        I believe that in a working enviroment, continuous feedback- both appriciation and criticism, are really important for better
+        results from an individual. Hence, I always take the liberty to ask my advisors/coworkers to write a testimonial regarding my work.
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        {% for test in testimonials %}
+            <span class="highlight" style="font-size:18px;">
+                Given By:&emsp;{{test.by}}
+            </span>&emsp; ~ {{test.role}}
+            <br>
+            <span class="highlight" style="font-style:italic;font-size:30px;">
+                &ldquo;
+            </span>
+            <span style="font-style:italic;line-height:2.0;text-align: center;">
+                {{test.description}}
+            </span>
+            <span class="highlight" style="font-style:italic;font-size:30px;">
+                &rdquo;
+            </span>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div style="display:flex;justify-content: center;">
+                {% include "about/stars.html" %}
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+        {% endfor %}
+    </p>
+</div>

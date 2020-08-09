@@ -1,0 +1,233 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nethra Gunti | Sections</title>
+    <link rel="stylesheet" href="{% static 'styles/sections.css' %}">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css2?family=Arima+Madurai:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <div class="page">
+		<div class="navigate">
+            <a href="{% url 'home' %}">
+                <div class="image-wrapper">
+                    <div class="image">
+                    </div>
+                </div>
+                <div class="name-wrapper">
+                    <div class="name">
+                        Nethra Gunti
+                    </div>
+                </div>
+            </a>
+            <div class="media">
+                <a href="https://www.linkedin.com/in/nethragunti16/"> <img src="/static/img/linkedin.png" alt="linkedin">&emsp;</a>
+                <a href="https://github.com/NethraGunti"> <img src="/static/img/github.png" alt="github">&emsp; </a>
+                <a href="https://www.instagram.com/nethrag16/"> <img src="/static/img/instagram.png" alt="instagram">&emsp; </a>
+            </div>
+
+            <div class="options about">
+                <p> <img src="/static/img/about.png" alt="about">&ensp; About</p>
+            </div>
+            <div class="options skills">
+                <p> <img src="/static/img/skills.png" alt="about">&nbsp; SKills & Study</p>
+            </div>
+            <div class="options experience">
+                <p> <img src="/static/img/work.png" alt="about">&ensp; Work</p>
+            </div>
+            <div class="options testimonials">
+                <p> <img src="/static/img/testimonials.png" alt="about">&ensp; Testimonials</p>
+            </div>
+        </div>
+        <div class="navigate-black">
+            <a id="back" href="">
+                << &nbsp; Back
+            </a>
+        </div>
+        <div class="content">
+            <div class="landing-content">
+                <div class="landing-img">
+                </div>
+                <div class="landing-title">
+                    <h1>
+                        Hello!
+                    </h1>
+                    <h5>
+                        I'm Nethra, a computer science junior at IIIT Sri City, and I love creating new stuff :p
+                        <br>
+                        You can know more about me, my skills, experiences and much more by browsing through the sections in the sidebar! 
+                        <br>
+                        <br>
+                        Thank you for passing by :)
+                    </h5>
+                </div>
+            </div>
+            <div class="about-content">
+                <div class="about-img content-img">
+                </div>
+                <div class="content-title">
+                    <h1>
+                        About Me
+                    </h1>
+                </div>
+                <div class="content-content">
+                    {% include "about/about.html" %}
+                </div>
+            </div>
+            <div class="skills-content">
+                <div class="skills-img content-img">
+                </div>
+                <div class="content-title">
+                    <h1>
+                        Skills, Interests & Courses
+                    </h1>
+                </div>
+                <div class="content-content">
+                    {% include "about/skills.html" with courses=courses %}
+                </div>
+            </div>
+            <div class="experience-content">
+                <div class="experience-img content-img">
+                </div>
+                <div class="content-title">
+                    <h1>
+                        Projects & Experiences
+                    </h1>
+                </div>
+                <div class="content-content">
+                    {% include "about/experience.html" with experience=experience projects=projects%}
+                </div>
+            </div>
+            <div class="testimonials-content">
+                <div class="testimonials-img content-img">
+                </div>
+                <div class="content-title">
+                    <h1>
+                        Work Testimonials 
+                    </h1>
+                </div>
+                <div class="content-content">
+                    {% include "about/testimonials.html" with testimonials=testimonials %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(".page").css("height",window.innerHeight-20);
+        $(".page").css("height",window.innerHeight-20);
+        $(".navigate").css("height",window.innerHeight-20);
+        $(".navigate-black").css("height",window.innerHeight-20);
+        $(".content").css("height",window.innerHeight-20);
+        $(".content").css("width",window.innerWidth-270);
+        $(".image-wrapper").hide().animate({left:"400px"});
+
+        $(".navigate-black").hide();
+        $(".about-content").hide();
+        $(".skills-content").hide();
+        $(".experience-content").hide();
+        $(".projects-content").hide();
+        $(".testimonials-content").hide();
+
+        function update() {
+        $(".page").css("height",window.innerHeight-20);
+        $(".page").css("height",window.innerHeight-20);
+
+        $(".navigate").css("height",window.innerHeight-20);
+        $(".navigate").css("width",window.innerwidth*0.22);
+
+        $(".navigate-black").css("height",window.innerHeight-20);
+        $(".navigate-black").css("width",window.innerwidth*0.22);
+
+        $(".content").css("height",window.innerHeight-20);
+        var $w = $(".navigate").width();
+        $(".content").css("width",window.innerWidth - $w/2);
+        }
+
+        $(window).resize(function() {
+            update();
+        });
+
+        $(document).ready(function(){
+            $(".image-wrapper").fadeTo(1,0.5).animate({left:"45px", opacity:"1.0"}, 1000);
+            $(".options").mouseenter(function(){
+                $("this").effect("shake", { times:3 }, 300);
+            });
+
+            $("#back").click(function(){
+                $(".navigate-black").hide();
+                $(".navigate").show();
+                $("body").css("background-color","#ffffff");
+
+                $(".landing-content").show();
+                $(".about-content").hide();
+                $(".skills-content").hide();
+                $(".experience-content").hide();
+                $(".projects-content").hide();
+                $(".testimonials-content").hide();
+            });
+
+            $(".about").click(function(){
+                $(".navigate").hide();
+                $(".navigate-black").show();
+                $(".navigate-black").css("background-color","#9b8e55");
+                $("body").css("background-color","#b9af88");
+                $(".page").css("border","2px solid black");
+
+                $(".landing-content").hide();
+                $(".about-content").show();
+            });
+
+            $(".skills").click(function(){
+                $(".navigate").hide();
+                $(".navigate-black").show();
+                $(".navigate-black").css("background-color","#7d6850");
+                $("body").css("background-color","#baa792");
+                $(".page").css("border","2px solid black");
+
+                $(".landing-content").hide();
+                $(".skills-content").show();
+            });
+
+            $(".experience").click(function(){
+                $(".navigate").hide();
+                $(".navigate-black").show();
+                $(".navigate-black").css("background-color","#5c6d83");
+                $("body").css("background-color","#a8b9d0");
+                $(".page").css("border","2px solid black");
+
+                $(".landing-content").hide();
+                $(".experience-content").show();
+            });
+            
+            $(".projects").click(function(){
+                $(".navigate").hide();
+                $(".navigate-black").show();
+                $(".navigate-black").css("background-color","#99604a");
+                $("body").css("background-color","#bf9c8e");
+                $(".page").css("border","2px solid black");
+
+                $(".landing-content").hide();
+                $(".projects-content").show();
+            });
+
+            $(".testimonials").click(function(){
+                $(".navigate").hide();
+                $(".navigate-black").show();
+                $(".navigate-black").css("background-color","#554f5f");
+                $("body").css("background-color","#999595");
+                $(".page").css("border","2px solid black");
+
+                $(".landing-content").hide();
+                $(".testimonials-content").show();
+            });
+
+        });
+    </script>
+</body>
+</html>

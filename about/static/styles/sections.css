@@ -1,0 +1,278 @@
+/* navigation bar width 250px */
+@keyframes shake {
+    10%, 90% {
+      transform: translate3d(-1px, 0, 0);
+    }
+  
+    20%, 80% {
+      transform: translate3d(2px, 0, 0);
+    }
+  
+    30%, 50%, 70% {
+      transform: translate3d(-4px, 0, 0);
+    }
+  
+    40%, 60% {
+      transform: translate3d(4px, 0, 0);
+    }
+}
+
+@-webkit-keyframes soft-blink {
+    0% { opacity: 0; }
+    50% { opacity: 0; }
+    100% { opacity: 0.8; }
+  }
+  
+  @keyframes soft-blink {
+    0% { opacity: 0; }
+    50% { opacity: 0; }
+    100% { opacity: 0.8; }
+  }
+  
+::-webkit-scrollbar {
+    width: 5px;
+}
+  
+  /* Track */
+::-webkit-scrollbar-track {
+    background: #90655c; 
+}
+   
+  /* Handle */
+::-webkit-scrollbar-thumb {
+    background: #5c8790; 
+}
+  
+  /* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+
+body{
+    overflow: hidden;
+}
+a{
+    text-decoration: none;
+}
+.navigate{
+    width: 250px;
+    background-color: #90655c;
+    float: left;
+}
+.navigate-black{
+    width: 250px;
+    float: left;
+    display: flex;
+    justify-content: center;
+}
+#back{
+    height: 20px;
+    position: absolute;
+    top: 50%;
+    font-style: italic;
+    text-decoration: underline;
+    border-bottom: 1px solid black;
+    font-weight: bold;
+    -webkit-animation: 1.25s soft-blink infinite alternate;
+    animation: 1.25s soft-blink infinite alternate;
+    color: black;
+  
+}
+#back:hover{
+    box-shadow:0 0 20px 12px rgba(0,0,0, .6);
+    -webkit-animation: none;
+    animation: none;
+
+}
+
+.image-wrapper{
+    position: absolute;
+    border: 2px solid #5c8790;
+    border-radius: 50%;
+    height: 155px;
+    width: 155px;
+    /* margin-left: 45px; */
+    margin-right: 45px;
+    margin-top: 20px;
+}
+
+.image{
+    background-color: #5c8790;
+    height: 150px;
+    width: 150px;
+    margin-left: 2.5px;
+    margin-right: 2.5px;
+    margin-top: 2.5px;
+    border-radius: 50%;
+    background-image: url('../img/nethra6.jpeg');
+}
+
+.name-wrapper{
+    position: absolute;
+    margin-top: 180px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 30px;
+    font-weight: 900;
+    margin-left: 30px;
+    color: #333333;
+    text-shadow: 2px 2px #77a0a8;
+}
+
+.media{
+    position: absolute;
+    margin-top: 230px;
+    margin-left: 75px;
+}
+
+.options{
+    position: absolute;
+    background-color: #5c8790;
+    height: 50px;
+    width: 250px;
+    text-align: center;
+    font-size: 18px;
+    border: 1px solid white;
+}
+p{
+    margin-top: 10px;
+}
+
+
+.about{
+    top: 45%;
+}
+.skills{
+    top: 55%;
+}
+.experience{
+    top: 65%;
+}
+.testimonials{
+    top: 75%;
+}
+
+.content{
+    overflow: auto;
+    position: absolute;
+    margin-left: 250px;
+    background-color: white;
+}
+.content-title{
+    color: white;
+    text-align: center;
+    margin-top: 150px;
+    font-family: Arima Madurai,cursive;
+}
+.content-title, .content-img {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.options:hover{
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+.landing-content{
+    color: #271e1e;
+    height: 100%;
+    width: 100%;
+    font-size: 30px;
+}
+
+.landing-img{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ), url('/static/img/landing.jpg');
+    background-size: cover;
+    background-position: 50%;
+    background-repeat: no-repeat;
+
+}
+.landing-title{
+    text-align: center;
+    margin-top: 80px;
+    max-width: 85%;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+.landing-title, .landing-img {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.about-img{
+    position: relative;
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('/static/img/back-about.jpg');
+    background-size: cover;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 300px;
+}
+.skills-img{
+    position: relative;
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('/static/img/back-skills.jpg');
+    background-size: cover;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 300px;
+}
+.experience-img{
+    position: relative;
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('/static/img/back-experience.jpg');
+    background-size: cover;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 300px;
+}
+.projects-img{
+    position: relative;
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('/static/img/back-project.jpg');
+    background-size: cover;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 300px;
+}
+.testimonials-img{
+    position: relative;
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('/static/img/back-testimonial.jpg');
+    background-size: cover;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 300px;
+}
+
+.content-content{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+h3{
+    font-size: 35px;
+    font-family: 'Arima Madurai', cursive;
+    font-weight: noraml;
+}
+.highlight{
+    font-weight: bolder;
+}
+
+.identity{
+    font-size: 14px;
+    font-family: Open Sans, sans-serif;
+    line-height: 1.8;
+}
+.text{
+    margin-right: 20px;
+}

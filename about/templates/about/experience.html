@@ -1,0 +1,94 @@
+<div class="text">
+    <h3>
+        Work Experience ({{experience.count}})
+    </h3>
+    
+    <p class="identity">
+        Being only a senior in college, I've had just limited industry exposure yet. But I believe I have bigger oppurtutnities waiting for me and so
+        I'm utilizing every chance I get at improving my existing skills and developing new ones.
+        You can also checkout the testimonials given by my colleagues and advisors <a id="redirect2" style="text-decoration: underline;">here</a>.
+        <br>
+        <br>
+        {% for exp in experience %}
+            <span class="highlight"  style="font-size:18px;">
+                Role : &ensp;{{exp.role}}
+            </span>
+            <br>
+            <span style="text-decoration:underline;font-weight:600;">
+                Type:
+            </span> &ensp;{{exp.type}}, {{exp.location}}
+            <br>
+            <span style="text-decoration:underline;font-weight:600;">
+                At: 
+            </span> &ensp;{{exp.company}}
+            <br>
+            <span style="text-decoration:underline;font-weight:600;">
+            Period: 
+            </span>&ensp;{{exp.period}}
+            <br>
+            <span style="text-decoration:underline;font-weight:600;">
+            Description: 
+            </span>&ensp;{{exp.description}} 
+            <br>
+            <br>
+            <br>
+        {% endfor %}
+        <br>
+        <div style="display:flex;justify-content: center;">
+            {% include "about/stars.html" %}
+        </div>
+        <br>
+
+    </p>
+    <h3>
+        Projects ({{projects.count}})
+    </h3>
+    
+    <p class="identity">
+        Below is a list of projects I've completed or currently working on as a part of a job, college work or personal interest.
+        The first few projects are Django based which includes this website as well, and like I've mentioned before, I'm looking forward to dive into new fields now.
+        <br>
+        <br>
+        {% for pro in projects %}
+            <span class="highlight" style="font-size:18px;">
+                Project : &ensp;{{pro.name}}
+            </span>
+            <br>
+            <span style="text-decoration:underline;font-weight:600;">
+                Role:
+            </span> &ensp;{{pro.role}}
+            <br>
+            <span style="text-decoration:underline;font-weight:600;">
+            At: 
+            </span>&ensp;{{pro.at}}
+            <br>
+            <span style="text-decoration:underline;font-weight:600;">
+            Period: 
+            </span>&ensp;{{pro.period}}
+            <br>
+            <span style="text-decoration:underline;font-weight:600;">
+            Description: 
+            </span>&ensp;{{pro.description}}
+            <br>
+            <br>
+            <br>
+        {% endfor %}
+        <br>
+        <div style="display:flex;justify-content: center;">
+            {% include "about/stars.html" %}
+        </div>
+        <br>
+    </p>
+</div>
+
+<script>
+$("#redirect2").click(function(){
+    $(".experience-content").hide();
+    $(".testimonials-content").show();
+    $(".page").css("border","2px solid black");
+    $(".navigate-black").css("background-color","#99604a");
+    $("body").css("background-color","#bf9c8e");
+});
+
+</script>
+    

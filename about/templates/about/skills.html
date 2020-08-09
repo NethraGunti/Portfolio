@@ -1,0 +1,149 @@
+<div class="text">
+    <h3>
+        Skills
+    </h3>
+    
+    <p>
+        <div style="height: 200px;">
+            <div id="languages" style="width:30%;float:left;">
+                <h4>
+                    Programming Languages:
+                </h4>
+                <p>
+                    Python, Java, C
+                    <br>
+                    I also plan on learning GoLang in the near future
+                </p>    
+            </div>
+            <div id="concepts" style="width:30%;float:left; margin-left:20px;">
+                <h4>
+                    Fields & Concepts:
+                </h4>
+                <p>
+                    Object Oriented Programming, Data Structures and Algorithms
+                    <br>
+                    Full Stack Development, Python and/or Django Development, Software Development, Machine Learning, Artificial Intelligence, Data Vizualization
+                </p>    
+            </div>
+            <div id="frameworks" style="width:30%;float:left; margin-left:20px;">
+                <h4>
+                    Frameworks:
+                </h4>
+                <p>
+                    Django, JQuery, REST, Celery, Swagger API, pytest
+                </p>    
+            </div>
+    
+        </div>
+        <div style="height: 150px;">
+            <div id="technologies" style="width:30%;float: left;">
+                <h4>
+                    Other Technologies:
+                </h4>
+                <p>
+                    HTML, CSS, JavaScript, Heroku, Amazon Web Services(AWS), SCRUM, Agile Methodology
+                </p>
+            </div>
+            <div id="tools" style="width:30%;float: left;margin-left:20px;">
+                <h4>
+                    Tools and Editors:
+                </h4>
+                <p>
+                    GitHub, Bitbucket, VsCode, PyCharm, Eclipse, Jupyter Notebook, Atom
+                </p>    
+            </div>
+            <div id="os" style="width:30%;float: left;margin-left:20px;">
+                <h4>
+                    Operating System:
+                </h4>
+                <p>
+                    Unix: Ubuntu, Kubuntu, Mint, Parrot
+                    <br>
+                    Windows
+                </p>    
+            </div>
+        </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div style="display:flex;justify-content: center;">
+                {% include "about/stars.html" %}
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+
+    </p>
+
+    <h3>
+        Fields of Interest:
+    </h3>
+    <p>
+        Being a computer science engineer, I take interest in
+        <span class="highlight">
+            Development 
+        </span> in general.
+        Having had experience in
+        <span class="highlight">
+            Full Stack and Backend Development
+        </span>
+        , I can say that 
+        <span class="highlight">
+            Software, Application and Web Development 
+        </span>
+        are a few of my fields of interest.
+        I also want to venture into fields like 
+        <span class="highlight">
+            Cognitive Science, Artificial Intelligence and Data Analytics
+        </span> that are so rapidly developing.
+        Apart from these, I also take interest in 
+        <span class="highlight">
+            Human Psychology
+        </span> as I'm truly fascinated by the subject and I also believe that it would be necessary at any point in life.
+
+            <br>
+            <br>
+            <br>
+            <br>
+            <div style="display:flex;justify-content: center;">
+                {% include "about/stars.html" %}
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+
+    </p>
+
+    <h3>
+        Courses ({{courses.count}})
+    </h3>
+    <p>
+        Below are a list of courses that I have completed both in and out of college.
+        Apart from these, I plan on taking additional courses to improve my skills in JavaScript, Artifical Intelligence and Data Structures.
+        <br>
+        <br>
+        {% for course in courses %}
+        <span style="font-weight: bold;font-size:17px;">
+        Course Name:&emsp;{{course.course}}
+        </span>
+        <br>
+        Offered by:&emsp;{{course.by}}
+        <br>
+        Course Duration:&emsp;{{course.date}}
+            <br>
+            <br>
+            <br>
+        {% endfor %}
+        <br>
+        <div style="display:flex;justify-content: center;">
+            {% include "about/stars.html" %}
+        </div>
+        <br>
+
+    </p>
+</p>
+</div>
+    

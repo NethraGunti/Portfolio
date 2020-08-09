@@ -1,0 +1,86 @@
+body{
+    overflow: hidden;
+}
+
+.title, .about-site, .down{
+    position: absolute;
+}
+
+#container{
+    display: flex;
+    justify-content: center;
+}
+
+.title{
+    top: 10%;
+    height: 200px;
+    width: 800px;
+}
+
+.image{
+    width: 200px;
+    height: 200px;
+    float: left;
+    margin-left: 80px;
+    background-color: rgba(63, 61, 60, 0.198);
+    background-image: url('../img/nethra5.jpeg');
+    background-size: cover;
+    border-radius: 50%;
+    transition: 1s;
+}
+
+.details{
+    margin-left: 350px;
+    margin-right: 100px;
+    width: 350px;
+    margin-top: 60px;
+    font-size: 30px;
+    font-family: New Century Schoolbook, serif;
+    transition: 1s;
+}
+
+.about-site{
+    top: 45%;
+    color: #322320;
+    text-align: center;
+    width: 800px;
+    transition: 1s;
+}
+
+.down{
+    top: 80%;
+    border: 2px solid black;
+    height: 35px;
+    width: 35px;
+    border: 2px solid #322320;
+    border-radius: 50%;
+    transition: 0.5s;
+}
+
+.down:hover, .image:hover, .details:hover, .about-site:hover {
+    -ms-transform: scale(1.25);
+    -webkit-transform: scale(1.25);
+    transform: scale(1.25); 
+}
+
+#arrow{
+    margin-left: 3px;
+    margin-top: 3px;
+    font-size: 20px;
+    font-family: 'Open Sans', sans-serif;
+    border: 2px solid #322320;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+}
+
+#arr{
+    margin-left: 3px;
+    margin-right: 5px;
+}
+
+
+a{
+    color: #322320;
+    text-decoration: none;
+}

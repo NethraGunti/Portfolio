@@ -1,0 +1,277 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Nethra Gunti</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<link rel="stylesheet" href="{% static 'styles/about.css' %}">
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+		<style>
+			body {
+				background-color: #efd1b5;
+				color: #61443e;
+			}
+		</style>
+	</head>
+	<body>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<div id="container">
+				<div class="title">
+					<div class="image">
+					</div>
+					<div class="details">
+						<h2 style="margin-bottom: 10px; margin-left:30px;">Nethra Gunti</h2>
+						<p style="font-style: italic;font-size: 13px;margin-left: -10px;">“have no fear of perfection, you’ll never reach it” ~Salvador Dali</p>
+					</div>
+				</div>
+				<div class="about-site">
+					<p>
+					<span style="font-weight: bold;">Welcome to my portfolio website!</span>
+					<br>
+						Everything on this site is a part of my resume and this is my take at showcasing it using my creativity.
+						This is a dynamic site built with Django 3.0.7 and deployed using Heroku. The scenes in the background are created using Three JS. The frontend is designed using HTML5 and styled using CSS3 and JQuery.
+						<br>
+						<br>
+						PS: use the mouse pointer and left/right clicks to navigate through the background!
+						<br>
+						you could also use a,w,s,d,r,f,up,down,left,right keys instead ;)
+					</p>
+				</div>
+				<div class="down">
+					<a href="{% url 'sections' %}">
+						<div id="arrow">
+							<span id="arr">
+								&#9660;
+							</span>
+						</div>
+					</a>
+				</div>
+
+			<script>
+				$(".top").hide();
+				$(".title").hide();
+				$("#container").css("height",window.innerHeight);
+				$("#container").css("width",window.innerWidth);
+				
+				function update() {
+				$(".title").css("height",window.innerWidth/2);
+				$(".about-site").css("width",window.innerwidth/2);
+
+				$("#container").css("height",window.innerHeight-20);
+				$("#container").css("width",window.innerWidth-20);
+				
+				console.log($(document).width())
+				console.log($(window).width())
+				if ($(document).width() > $(window).width()){
+					$(".about-site").css("width",window.innerWidth)
+				}
+
+				}
+
+				$(window).resize(function() {
+					console.log("hereh")
+					update();
+				});
+
+				$(document).ready(function(){
+					$(".title").fadeIn(6000);
+				});
+			</script>
+
+	</div>
+		<script type="module">
+
+			import * as THREE from '../static/javascript/three.module.js';
+
+			import Stats from '../static/javascript/stats.module.js';
+
+			import { FirstPersonControls } from '../static/javascript/FirstPersonControls.js';
+			import { ImprovedNoise } from '../static/javascript/ImprovedNoise.js';
+
+			var container, stats;
+			var camera, controls, scene, renderer;
+			var mesh, texture;
+
+			var worldWidth = 256, worldDepth = 256;
+			var clock = new THREE.Clock();
+
+			init();
+			animate();
+
+			function init() {
+
+				container = document.getElementById( 'container' );
+
+				camera = new THREE.PerspectiveCamera( 60, 1000 / 1000, 1, 10000 );
+
+				scene = new THREE.Scene();
+				scene.background = new THREE.Color( 0xefd1b5 );
+				scene.fog = new THREE.FogExp2( 0xefd1b5, 0.0015);
+
+				var data = generateHeight( worldWidth, worldDepth );
+
+				camera.position.set( 100,  800, -800);
+				camera.lookAt( -100, 810, -800 );
+
+				var geometry = new THREE.PlaneBufferGeometry( 7500, 7500, worldWidth - 1, worldDepth - 1 );
+				geometry.rotateX( - Math.PI / 2 );
+
+				var vertices = geometry.attributes.position.array;
+
+				for ( var i = 0, j = 0, l = vertices.length; i < l; i ++, j += 3 ) {
+
+					vertices[ j + 1 ] = data[ i ] * 10;
+
+				}
+
+				texture = new THREE.CanvasTexture( generateTexture( data, worldWidth, worldDepth ) );
+				texture.wrapS = THREE.ClampToEdgeWrapping;
+				texture.wrapT = THREE.ClampToEdgeWrapping;
+
+				mesh = new THREE.Mesh( geometry, new THREE.MeshBasicMaterial( { map: texture } ) );
+				scene.add( mesh );
+
+				renderer = new THREE.WebGLRenderer();
+				renderer.setPixelRatio( window.devicePixelRatio );
+				renderer.setSize( window.innerWidth-22, window.innerHeight-20 );
+				container.appendChild( renderer.domElement );
+
+				controls = new FirstPersonControls( camera, renderer.domElement );
+				controls.movementSpeed = 150;
+				controls.lookSpeed = 0.1;
+
+				stats = new Stats();
+				container.appendChild( stats.dom );
+
+
+				//
+
+				window.addEventListener( 'resize', onWindowResize, false );
+
+			}
+
+			function onWindowResize() {
+
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+
+				renderer.setSize( window.innerWidth, window.innerHeight );
+
+				controls.handleResize();
+
+			}
+
+			function generateHeight( width, height ) {
+
+				var seed = Math.PI / 4;
+				window.Math.random = function () { const x = Math.sin( seed ++ ) * 10000; return x - Math.floor( x ); };
+
+				var size = width * height, data = new Uint8Array( size );
+				var perlin = new ImprovedNoise(), quality = 1, z = Math.random() * 100;
+
+				for ( var j = 0; j < 4; j ++ ) {
+
+					for ( var i = 0; i < size; i ++ ) {
+
+						var x = i % width, y = ~ ~ ( i / width );
+						data[ i ] += Math.abs( perlin.noise( x / quality, y / quality, z ) * quality * 1.75 );
+
+					}
+
+					quality *= 5;
+
+				}
+
+				return data;
+
+			}
+
+			function generateTexture( data, width, height ) {
+
+				var canvas, canvasScaled, context, image, imageData, vector3, sun, shade;
+
+				vector3 = new THREE.Vector3( 0, 0, 0 );
+
+				sun = new THREE.Vector3( 1, 1, 1 );
+				sun.normalize();
+
+				canvas = document.createElement( 'canvas' );
+				canvas.width = width;
+				canvas.height = height;
+
+				context = canvas.getContext( '2d' );
+				context.fillStyle = '#000';
+				context.fillRect( 0, 0, width, height );
+
+				image = context.getImageData( 0, 0, canvas.width, canvas.height );
+				imageData = image.data;
+
+				for ( var i = 0, j = 0, l = imageData.length; i < l; i += 4, j ++ ) {
+
+					vector3.x = data[ j - 2 ] - data[ j + 2 ];
+					vector3.y = 2;
+					vector3.z = data[ j - width * 2 ] - data[ j + width * 2 ];
+					vector3.normalize();
+
+					shade = vector3.dot( sun );
+
+					imageData[ i ] = ( 96 + shade * 128 ) * ( 0.5 + data[ j ] * 0.007 );
+					imageData[ i + 1 ] = ( 32 + shade * 96 ) * ( 0.5 + data[ j ] * 0.007 );
+					imageData[ i + 2 ] = ( shade * 96 ) * ( 0.5 + data[ j ] * 0.007 );
+
+				}
+
+				context.putImageData( image, 0, 0 );
+
+				// Scaled 4x
+
+				canvasScaled = document.createElement( 'canvas' );
+				canvasScaled.width = width * 4;
+				canvasScaled.height = height * 4;
+
+				context = canvasScaled.getContext( '2d' );
+				context.scale( 4, 4 );
+				context.drawImage( canvas, 0, 0 );
+
+				image = context.getImageData( 0, 0, canvasScaled.width, canvasScaled.height );
+				imageData = image.data;
+
+				for ( var i = 0, l = imageData.length; i < l; i += 4 ) {
+
+					var v = ~ ~ ( Math.random() * 5 );
+
+					imageData[ i ] += v;
+					imageData[ i + 1 ] += v;
+					imageData[ i + 2 ] += v;
+
+				}
+
+				context.putImageData( image, 0, 0 );
+
+				return canvasScaled;
+
+			}
+
+			//
+
+			function animate() {
+
+				requestAnimationFrame( animate );
+
+				render();
+
+			}
+
+
+			function render() {
+
+				controls.update( clock.getDelta() );
+				renderer.render( scene, camera );
+
+			}
+
+		</script>
+
+	</body>
+</html>
