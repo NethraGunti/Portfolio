@@ -51,31 +51,34 @@
 			<script>
 				$(".top").hide();
 				$(".title").hide();
-				$("#container").css("height",window.innerHeight);
-				$("#container").css("width",window.innerWidth);
-				
-				function update() {
-				$(".title").css("height",window.innerWidth/2);
-				$(".about-site").css("width",window.innerwidth/2);
-
 				$("#container").css("height",window.innerHeight-20);
 				$("#container").css("width",window.innerWidth-20);
-				
-				console.log($(document).width())
-				console.log($(window).width())
 				if ($(document).width() > $(window).width()){
-					$(".about-site").css("width",window.innerWidth)
-				}
+						$(".about-site").css("width",window.innerWidth-30)
+					}
 
+				function update() {
+					$(".title").css("height",window.innerWidth/2);
+					$(".about-site").css("width",window.innerwidth/2);
+
+					$("#container").css("height",window.innerHeight-20);
+					$("#container").css("width",window.innerWidth-20);
+					
+					if ($(document).width() > $(window).width()){
+						$(".about-site").css("width",window.innerWidth-20)
+					}
+					if ($(".about-site").width() < $(window).width()){
+						console.log("here")
+						$(".about-site").css("width","800px")
+					}
 				}
 
 				$(window).resize(function() {
-					console.log("hereh")
 					update();
 				});
 
 				$(document).ready(function(){
-					$(".title").fadeIn(6000);
+					$(".title").fadeIn(5000);
 				});
 			</script>
 

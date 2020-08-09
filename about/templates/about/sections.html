@@ -31,24 +31,28 @@
                 <a href="https://www.instagram.com/nethrag16/"> <img src="/static/img/instagram.png" alt="instagram">&emsp; </a>
             </div>
 
-            <div class="options about">
-                <p> <img src="/static/img/about.png" alt="about">&ensp; About</p>
-            </div>
-            <div class="options skills">
-                <p> <img src="/static/img/skills.png" alt="about">&nbsp; SKills & Study</p>
-            </div>
-            <div class="options experience">
-                <p> <img src="/static/img/work.png" alt="about">&ensp; Work</p>
-            </div>
-            <div class="options testimonials">
-                <p> <img src="/static/img/testimonials.png" alt="about">&ensp; Testimonials</p>
-            </div>
-        </div>
-        <div class="navigate-black">
-            <a id="back" href="">
-                << &nbsp; Back
+            <a href="#">
+                <div class="options about">
+                    <p> <img src="/static/img/about.png" alt="about">&ensp; About</p>
+                </div>    
+            </a>
+            <a href="#">
+                <div class="options skills">
+                    <p> <img src="/static/img/skills.png" alt="about">&nbsp; Skills & Study</p>
+                </div>    
+            </a>
+            <a href="#">
+                <div class="options experience">
+                    <p> <img src="/static/img/work.png" alt="about">&ensp; Work</p>
+                </div>    
+            </a>
+            <a href="#">
+                <div class="options testimonials">
+                    <p> <img src="/static/img/testimonials.png" alt="about">&ensp; Testimonials</p>
+                </div>    
             </a>
         </div>
+
         <div class="content">
             <div class="landing-content">
                 <div class="landing-img">
@@ -123,13 +127,15 @@
         $(".page").css("width",window.innerWidth-20);
 
         $(".navigate").css("height",window.innerHeight-20);
+        $(".navigate").css("width",window.innerwidth*0.22);
 
         $(".navigate-black").css("height",window.innerHeight-20);
+        $(".navigate-black").css("width",window.innerwidth*0.22);
         
         $(".content").css("height",window.innerHeight-20);
-        $(".content").css("width",window.innerWidth-270);
         
         $(".image-wrapper").hide().animate({left:"400px"});
+        $(".content").css("width",window.innerWidth - $(".navigate").width()-15);
 
         $(".navigate-black").hide();
         $(".about-content").hide();
@@ -149,7 +155,11 @@
             $(".navigate-black").css("width",window.innerwidth*0.22);
 
             $(".content").css("height",window.innerHeight-20);
-            $(".content").css("width",window.innerWidth - $(".navigate").width());
+            $(".content").css("width",window.innerWidth - $(".navigate").width()-15);
+
+            if ($(document).width() < $(window).width()){
+                $(".landing-title").css("font-size","15px");
+            }
         }
 
         $(window).resize(function() {
@@ -162,71 +172,87 @@
                 $("this").effect("shake", { times:3 }, 300);
             });
 
-            $("#back").click(function(){
-                $(".navigate-black").hide();
-                $(".navigate").show();
-                $("body").css("background-color","#ffffff");
-
-                $(".landing-content").show();
-                $(".about-content").hide();
-                $(".skills-content").hide();
-                $(".experience-content").hide();
-                $(".projects-content").hide();
-                $(".testimonials-content").hide();
-            });
-
             $(".about").click(function(){
-                $(".navigate").hide();
-                $(".navigate-black").show();
-                $(".navigate-black").css("background-color","#9b8e55");
+                $(".navigate").css("background-color","#949245");
+                $(".options").css("background-color","#b9af88")
                 $("body").css("background-color","#b9af88");
-                $(".page").css("border","2px solid black");
+                $(".about").css("box-shadow","0 0 20px 12px rgba(0,0,0, .8)");
+                $(".about").css("font-style","italic");
+
+                $(".skills").css("box-shadow","none");
+                $(".skills").css("font-style","normal");
+                $(".experience").css("box-shadow","none");
+                $(".experience").css("font-style","normal");
+                $(".testimonials").css("box-shadow","none");
+                $(".testimonials").css("font-style","normal");
 
                 $(".landing-content").hide();
+                $(".skills-content").hide();
+                $(".experience-content").hide();
+                $(".testimonials-content").hide();
                 $(".about-content").show();
             });
 
             $(".skills").click(function(){
-                $(".navigate").hide();
-                $(".navigate-black").show();
-                $(".navigate-black").css("background-color","#7d6850");
+                $(".navigate").css("background-color","#7d6850");
                 $("body").css("background-color","#baa792");
-                $(".page").css("border","2px solid black");
+                $(".options").css("background-color","#baa792")
+                $(".skills").css("box-shadow","0 0 20px 12px rgba(0,0,0, .8)");
+                $(".skills").css("font-style","italic");
+
+                $(".about").css("box-shadow","none");
+                $(".about").css("font-style","normal");
+                $(".experience").css("box-shadow","none");
+                $(".experience").css("font-style","normal");
+                $(".testimonials").css("box-shadow","none");
+                $(".testimonials").css("font-style","normal");
 
                 $(".landing-content").hide();
+                $(".about-content").hide();
+                $(".experience-content").hide();
+                $(".testimonials-content").hide();
                 $(".skills-content").show();
             });
 
             $(".experience").click(function(){
-                $(".navigate").hide();
-                $(".navigate-black").show();
-                $(".navigate-black").css("background-color","#5c6d83");
+                $(".navigate").css("background-color","#5c6d83");
                 $("body").css("background-color","#a8b9d0");
-                $(".page").css("border","2px solid black");
+                $(".options").css("background-color","#a8b9d0")
+                $(".experience").css("box-shadow","0 0 20px 12px rgba(0,0,0, .8)");
+                $(".experience").css("font-style","italic");
+
+                $(".about").css("box-shadow","none");
+                $(".about").css("font-style","normal");
+                $(".skills").css("box-shadow","none");
+                $(".skills").css("font-style","normal");
+                $(".testimonials").css("box-shadow","none");
+                $(".testimonials").css("font-style","normal");
 
                 $(".landing-content").hide();
+                $(".about-content").hide();
+                $(".skills-content").hide();
+                $(".testimonials-content").hide();
                 $(".experience-content").show();
-            });
-            
-            $(".projects").click(function(){
-                $(".navigate").hide();
-                $(".navigate-black").show();
-                $(".navigate-black").css("background-color","#99604a");
-                $("body").css("background-color","#bf9c8e");
-                $(".page").css("border","2px solid black");
-
-                $(".landing-content").hide();
-                $(".projects-content").show();
             });
 
             $(".testimonials").click(function(){
-                $(".navigate").hide();
-                $(".navigate-black").show();
-                $(".navigate-black").css("background-color","#554f5f");
+                $(".navigate").css("background-color","#554f5f");
                 $("body").css("background-color","#999595");
-                $(".page").css("border","2px solid black");
+                $(".options").css("background-color","#999595")
+                $(".testimonials").css("box-shadow","0 0 20px 12px rgba(0,0,0, .8)");
+                $(".testimonials").css("font-style","italic");
+
+                $(".about").css("box-shadow","none");
+                $(".about").css("font-style","normal");
+                $(".skills").css("box-shadow","none");
+                $(".skills").css("font-style","normal");
+                $(".experience").css("box-shadow","none");
+                $(".experience").css("font-style","normal");
 
                 $(".landing-content").hide();
+                $(".about-content").hide();
+                $(".skills-content").hide();
+                $(".experience-content").hide();
                 $(".testimonials-content").show();
             });
 
