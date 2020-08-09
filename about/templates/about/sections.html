@@ -120,11 +120,15 @@
 
     <script>
         $(".page").css("height",window.innerHeight-20);
-        $(".page").css("height",window.innerHeight-20);
+        $(".page").css("width",window.innerWidth-20);
+
         $(".navigate").css("height",window.innerHeight-20);
+
         $(".navigate-black").css("height",window.innerHeight-20);
+        
         $(".content").css("height",window.innerHeight-20);
         $(".content").css("width",window.innerWidth-270);
+        
         $(".image-wrapper").hide().animate({left:"400px"});
 
         $(".navigate-black").hide();
@@ -135,18 +139,17 @@
         $(".testimonials-content").hide();
 
         function update() {
-        $(".page").css("height",window.innerHeight-20);
-        $(".page").css("height",window.innerHeight-20);
+            $(".page").css("height",window.innerHeight-20);
+            $(".page").css("width",window.innerWidth-20);
 
-        $(".navigate").css("height",window.innerHeight-20);
-        $(".navigate").css("width",window.innerwidth*0.22);
+            $(".navigate").css("height",window.innerHeight-20);
+            $(".navigate").css("width",window.innerwidth*0.22);
 
-        $(".navigate-black").css("height",window.innerHeight-20);
-        $(".navigate-black").css("width",window.innerwidth*0.22);
+            $(".navigate-black").css("height",window.innerHeight-20);
+            $(".navigate-black").css("width",window.innerwidth*0.22);
 
-        $(".content").css("height",window.innerHeight-20);
-        var $w = $(".navigate").width();
-        $(".content").css("width",window.innerWidth - $w/2);
+            $(".content").css("height",window.innerHeight-20);
+            $(".content").css("width",window.innerWidth - $(".navigate").width());
         }
 
         $(window).resize(function() {
